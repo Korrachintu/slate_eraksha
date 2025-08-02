@@ -1,3 +1,4 @@
+import 'package:e_raksha/features/chat/screens/ai_chat_screen.dart';
 import 'package:e_raksha/features/onboarding/screens/about_yourself_screen.dart';
 import 'package:e_raksha/features/onboarding/screens/loading_screen.dart';
 import 'package:e_raksha/features/onboarding/screens/parental_code_screen.dart';
@@ -24,6 +25,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const PermissionsScreen());
       case '/loading':
         return MaterialPageRoute(builder: (_) => const LoadingScreen());
+      case '/ai_chat':
+        return MaterialPageRoute(builder: (_) => const AIChatScreen());
        // ... other routes ...
       default:
         return MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('Page not found'))));

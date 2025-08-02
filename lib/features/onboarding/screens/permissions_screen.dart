@@ -1,9 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../../../core/widgets/gradient_background.dart';
 import '../../../core/widgets/custom_button.dart';
 
-class PermissionsScreen extends StatelessWidget {
+class PermissionsScreen extends StatefulWidget {
   const PermissionsScreen({super.key});
+
+  @override
+  State<PermissionsScreen> createState() => _PermissionsScreenState();
+}
+
+class _PermissionsScreenState extends State<PermissionsScreen> {
+  Future<void> requestPermissions() async {
+    await [
+      Permission.microphone,
+      Permission.camera,
+      Permission.locationWhenInUse,
+    ].request();
+
+    if (!mounted) return;
+
+    // Always navigate to next screen regardless of permission status
+    Navigator.pushNamed(context, '/loading');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,53 +32,56 @@ class PermissionsScreen extends StatelessWidget {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32.0),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                  const SizedBox(height: 32),
-                  Text(
-                    "E-Raksha aids your growth and harmony",
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    "To get started, please allow us to access the following:",
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                  const SizedBox(height: 32),
-                  Row(
-                    children: const [
-                      Icon(Icons.access_time),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Text("Access to device, school status, etc."),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: const [
-                      Icon(Icons.notifications),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Text("Access to notifications and alerts"),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 32),
-                  CustomButton(
-                    text: "Allow Permissions",
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/loading');
-                    },
-                  ),
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                const SizedBox(height: 32),
+                Text(
+                  "Permissions Required",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  "To provide the best experience, E-Raksha needs access to:",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                const SizedBox(height: 24),
+                Row(
+                  children: const [
+                    Icon(Icons.mic, color: Colors.blue),
+                    SizedBox(width: 10),
+                    Text("Microphone (for voice features)"),
+                  ],
+                ),
+                SizedBox(height: 12),
+                Row(
+                  children: const [
+                    Icon(Icons.camera_alt, color: Colors.orange),
+                    SizedBox(width: 10),
+                    Text("Camera (for mood/analyis/images)"),
+                  ],
+                ),
+                SizedBox(height: 12),
+                Row(
+                  children: const [
+                    Icon(Icons.location_on, color: Colors.green),
+                    SizedBox(width: 10),
+                    Text("Location (for personalized experience)"),
+                  ],
+                ),
+                const SizedBox(height: 48),
+                CustomButton(
+                  text: "Allow Permissions",
+                  onPressed: requestPermissions,
+                ),
+              ],
             ),
           ),
         ),
