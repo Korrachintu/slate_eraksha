@@ -13,8 +13,14 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 16),
-          textStyle: TextStyle(fontSize: 16),
+          backgroundColor: const Color(0xFF2C6BFF), // #2c6bff as background
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          textStyle: const TextStyle(fontSize: 16),
+          foregroundColor: Colors.white, // Text color (optional, but recommended for blue buttons)
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          elevation: 2,
         ),
         child: Text(text),
       ),
