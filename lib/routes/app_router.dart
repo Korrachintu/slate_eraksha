@@ -1,4 +1,6 @@
 import 'package:e_raksha/features/chat/screens/ai_chat_screen.dart';
+import 'package:e_raksha/features/emotion_recognition/emotion_recognition_screen.dart';
+// import 'package:e_raksha/features/chat/screens/voice_chat_screen.dart';
 import 'package:e_raksha/features/onboarding/screens/about_yourself_screen.dart';
 import 'package:e_raksha/features/onboarding/screens/loading_screen.dart';
 import 'package:e_raksha/features/onboarding/screens/parental_code_screen.dart';
@@ -27,6 +29,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const LoadingScreen());
       case '/ai_chat':
         return MaterialPageRoute(builder: (_) => const AIChatScreen());
+      case '/emotion_recognition':
+        return MaterialPageRoute(builder: (_) => const EmotionRecognitionScreen());
+      // case '/voiceChat':
+      //   return MaterialPageRoute(builder: (_) => const VoiceChatScreen()); 
        // ... other routes ...
       default:
         return MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('Page not found'))));

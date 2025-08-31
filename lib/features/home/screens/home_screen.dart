@@ -13,11 +13,11 @@ class HomeScreen extends StatelessWidget {
     final weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(0, 185, 32, 32),
+      // backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: const Text('Welcome Back!'),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: GradientBackground(
@@ -29,22 +29,26 @@ class HomeScreen extends StatelessWidget {
                 child: ListView(
                   padding: const EdgeInsets.all(16),
                   children: [
-                    Card(
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                      child: ListTile(
-                        leading: const Icon(Icons.emoji_emotions, color: Colors.orange),
-                        title: const Text('Quick Mood Analysis'),
-                        subtitle: const Text('Feeling tired? happy? disturbed?'),
-                        trailing: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                          decoration: BoxDecoration(
-                            color: Colors.blue.shade50,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Text(
-                            "uses face scanner",
-                            style: TextStyle(fontSize: 10, color: Colors.blue),
+                    GestureDetector(  
+                      onTap: () => Navigator.pushNamed(context, '/emotion_recognition'),
+                      child:
+                        Card(
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        child: ListTile(
+                          leading: const Icon(Icons.emoji_emotions, color: Colors.orange),
+                          title: const Text('Quick Mood Analysis'),
+                          subtitle: const Text('Feeling tired? happy? disturbed?'),
+                          trailing: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                            decoration: BoxDecoration(
+                              color: Colors.blue.shade50,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Text(
+                               "uses face scanner",
+                              style: TextStyle(fontSize: 10, color: Colors.blue),
+                            ),
                           ),
                         ),
                       ),
