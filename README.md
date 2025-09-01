@@ -1,9 +1,3 @@
-Here is a single-file, starter-to-end **README.md** for your Flutter app (e.g., E-Raksha), including installation, permissions, project structure, usage, and core concepts.  
-Just copy and save this as `README.md` in your project’s root.
-
-***
-
-```markdown
 # E-Raksha: Mental Wellness Flutter App
 
 A modern Flutter application supporting onboarding, emotion recognition (camera + bar chart slider), AI chat, secure session management, and modular code for easy future expansion.
