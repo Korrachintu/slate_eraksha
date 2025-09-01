@@ -56,20 +56,34 @@ Or use your IDE's "Run" command.
 
 ```
 lib/
-├─ main.dart
-├─ core/
-│   └─ widgets/         # Reusable UI (backgrounds, navigation)
-├─ features/
-│   ├─ onboarding/
-│   ├─ home/
-│   ├─ ai_chat/
-│   └─ emotion_recognition/
-│       ├─ emotion_recognition_screen.dart
-│       ├─ mood_carousel.dart
-│       └─ intensity_bar_slider.dart
-├─ providers/           # App/session state
-├─ services/            # API calls/backends
-└─ models/              # Data models (e.g. emotion.dart, chat_message.dart)
+├── core/
+├── features/
+│   ├── chat/
+│   │   └── screens/
+│   │       ├── voice_chat_screen.dart
+│   │       └── ai_chat_screen.dart
+│   ├── emotion_recognition/
+│   │   ├── widgets/
+│   │   │   └── mood_carousel.dart
+│   │   ├── emotion_recognition_screen.dart
+│   │   └── emotion_result_screen.dart
+│   ├── home/
+│   │   └── screens/
+│   │       └── home_screen.dart
+│   └── onboarding/
+│       └── screens/
+│           ├── about_yourself_screen.dart
+│           ├── loading_screen.dart
+│           ├── otp_screen.dart
+│           ├── parental_code_screen.dart
+│           ├── permissions_screen.dart
+│           └── phone_verification_screen.dart
+├── models/
+│   └── emotion.dart
+├── routes/
+│   └── app_router.dart
+└── main.dart
+
 ```
 
 ---
@@ -91,8 +105,7 @@ lib/
 
 ## ⚙️ Backend/API Integration
 
-- REST API calls with `http` or `dio`
-- Secure tokens via `flutter_secure_storage`
+- fastapi 
 - Plug your emotion recognition/AI API into the respective features
 - Modular architecture is ready for extensions
 
@@ -131,7 +144,7 @@ MIT
 ## 🙋 Contacts
 
 Questions, ideas, bug reports:  
-Open an issue or contact [YOUR_EMAIL_HERE]
+Open an issue or contact pramodhkorra@gamil.com
 
 ---
 
@@ -142,12 +155,4 @@ Include screenshots/gifs of your app (emotion recognition, AI chat, onboarding..
 ---
 
 ```
-**This README.md file covers setup, architecture, key features, and contributor info in one place—just save and edit the usernames/emails as needed!**
 
-[1](https://github.com/webfactorymk/flutter-template/blob/main/README.md)
-[2](https://gitlab.com/rafaelanno-labo/template/template-flutter-app/-/blob/main/README.md)
-[3](https://www.walturn.com/insights/how-to-create-an-effective-flutter-readme)
-[4](https://github.com/zubairehman/flutter-boilerplate-project/blob/master/README.md)
-[5](https://pub.dev/packages/readme_helper)
-[6](https://dart.dev/tools/pub/writing-package-pages)
-[7](https://stackoverflow.com/questions/9331281/how-can-i-test-what-my-readme-md-file-will-look-like-before-committing-to-github)
