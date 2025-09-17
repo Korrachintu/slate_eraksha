@@ -97,46 +97,52 @@ class _AIChatScreenState extends State<AIChatScreen>
                 ),
               ),
 
-              // Greeting section
-              Padding(
-                padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Hey, Jane",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(fontWeight: FontWeight.w500)),
-                    const SizedBox(height: 4),
-                    Text("Tell me what’s on your mind today",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineSmall
-                            ?.copyWith(fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 12),
-                    Text(
-                      "You can tell me something specific, pick from the categories below or even start a voice chat with me",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(height: 1.4),
-                    ),
-                    const SizedBox(height: 24),
-                    Wrap(
-                      spacing: 12,
-                      runSpacing: 8,
-                      children: [
-                        _buildCategoryChip("School Stress"),
-                        _buildCategoryChip("Bullying"),
-                        _buildCategoryChip("Relationships"),
-                      ],
-                    ),
-                  ],
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Column(
+                    mainAxisAlignment:
+                        MainAxisAlignment.end, // push content toward bottom
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 95,
+                      ), // pushes content a bit up from absolute bottom
+                      Text(
+                        "Hey, Jane",
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        "Tell me what’s on your mind today",
+                        style: Theme.of(context).textTheme.headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        "You can tell me something specific, pick from the categories below or even start a voice chat with me",
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodyMedium?.copyWith(height: 1.4),
+                      ),
+                      const SizedBox(height: 24),
+                      Wrap(
+                        spacing: 12,
+                        runSpacing: 8,
+                        children: [
+                          _buildCategoryChip("School Stress"),
+                          _buildCategoryChip("Bullying"),
+                          _buildCategoryChip("Relationships"),
+                        ],
+                      ),
+                      const SizedBox(
+                        height:10,
+                      ), // optional extra spacing above bottom bar
+                    ],
+                  ),
                 ),
               ),
-
-              const SizedBox(height: 20),
 
               // Chat messages
               Expanded(
@@ -152,7 +158,9 @@ class _AIChatScreenState extends State<AIChatScreen>
                       child: Container(
                         margin: const EdgeInsets.symmetric(vertical: 4),
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 12),
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
                         decoration: BoxDecoration(
                           color: msg.isUser
                               ? Colors.blueAccent.withValues(alpha: 0.1)
@@ -196,10 +204,15 @@ class _AIChatScreenState extends State<AIChatScreen>
                                 height: 80,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: Colors.blueAccent.withValues(alpha: 0.3),
+                                  color: Colors.blueAccent.withValues(
+                                    alpha: 0.3,
+                                  ),
                                 ),
-                                child: const Icon(Icons.mic,
-                                    size: 40, color: Colors.blueAccent),
+                                child: const Icon(
+                                  Icons.mic,
+                                  size: 40,
+                                  color: Colors.blueAccent,
+                                ),
                               ),
                             );
                           },
@@ -208,7 +221,9 @@ class _AIChatScreenState extends State<AIChatScreen>
                         const Text(
                           "Listening...",
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w500),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ],
                     ),
@@ -219,25 +234,26 @@ class _AIChatScreenState extends State<AIChatScreen>
               if (!isFetchingAudio)
                 SafeArea(
                   child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 20,
+                    ),
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(32),
                         boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 8,
-                          ),
+                          BoxShadow(color: Colors.black12, blurRadius: 8),
                         ],
                       ),
                       child: Row(
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.mic,
-                                color: Colors.blueAccent),
+                            icon: const Icon(
+                              Icons.mic,
+                              color: Colors.blueAccent,
+                            ),
                             onPressed: onMicPressed,
                           ),
                           Expanded(
@@ -252,10 +268,11 @@ class _AIChatScreenState extends State<AIChatScreen>
                             ),
                           ),
                           IconButton(
-                            icon: const Icon(Icons.send,
-                                color: Colors.blueAccent),
-                            onPressed: () =>
-                                sendUserMessage(_controller.text),
+                            icon: const Icon(
+                              Icons.send,
+                              color: Colors.blueAccent,
+                            ),
+                            onPressed: () => sendUserMessage(_controller.text),
                           ),
                         ],
                       ),

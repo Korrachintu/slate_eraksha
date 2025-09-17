@@ -26,7 +26,9 @@ class OTPScreen extends StatelessWidget {
                 const SizedBox(height: 48),
                 Text(
                   "Enter OTP",
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Text(
@@ -42,12 +44,20 @@ class OTPScreen extends StatelessWidget {
                   keyboardType: TextInputType.number,
                 ),
                 const SizedBox(height: 24),
-                CustomButton(
-                  text: "Verify OTP",
-                  onPressed: () {
-                    // Add OTP verification logic here,
-                    Navigator.pushNamed(context, '/about_yourself');// or navigate to the next screen
-                  },
+
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 60),
+                      child: CustomButton(
+                        text: "Complete Verification",
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/about_yourself');
+                        },
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

@@ -16,9 +16,10 @@ class CustomButton extends StatelessWidget {
           backgroundColor: const Color(0xFF2C6BFF), // #2c6bff as background
           padding: const EdgeInsets.symmetric(vertical: 16),
           textStyle: const TextStyle(fontSize: 16),
-          foregroundColor: Colors.white, // Text color (optional, but recommended for blue buttons)
+          foregroundColor: Colors
+              .white, // Text color (optional, but recommended for blue buttons)
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
           ),
           elevation: 2,
         ),

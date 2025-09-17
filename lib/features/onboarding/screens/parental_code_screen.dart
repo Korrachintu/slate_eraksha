@@ -5,7 +5,7 @@ import '../../../core/widgets/custom_button.dart';
 class ParentalCodeScreen extends StatelessWidget {
   const ParentalCodeScreen({super.key});
 
-  @override
+ @override
   Widget build(BuildContext context) {
     final codeController = TextEditingController();
 
@@ -15,42 +15,56 @@ class ParentalCodeScreen extends StatelessWidget {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32.0),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                  const SizedBox(height: 32),
-                  Text(
-                    "Enter Parental Code",
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    "Student login needs parental verification",
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                  const SizedBox(height: 32),
-                  TextFormField(
-                    controller: codeController,
-                    decoration: const InputDecoration(
-                      labelText: "Enter 4 digit code",
-                      border: OutlineInputBorder(),
+            child: Column(
+              children: [
+                /// Scrollable content (header + input)
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.arrow_back),
+                          onPressed: () => Navigator.of(context).pop(),
+                        ),
+                        const SizedBox(height: 32),
+                        Text(
+                          "Enter Parental Code",
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          "Student login needs parental verification",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        const SizedBox(height: 32),
+                        TextFormField(
+                          controller: codeController,
+                          decoration: const InputDecoration(
+                            labelText: "Enter 4 digit code",
+                            border: OutlineInputBorder(),
+                          ),
+                          keyboardType: TextInputType.number,
+                        ),
+                        const SizedBox(height: 100), // extra scroll space
+                      ],
                     ),
-                    keyboardType: TextInputType.number,
                   ),
-                  const SizedBox(height: 32),
-                  CustomButton(
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 60),// trying extra padding here but its not working 
+                  child: CustomButton(
                     text: "Log in as Student Account",
                     onPressed: () {
                       Navigator.pushNamed(context, '/permission');
                     },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
