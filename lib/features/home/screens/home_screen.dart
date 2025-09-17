@@ -250,7 +250,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         IconButton(
                           icon: const Icon(Icons.person_outline, color: Colors.white),
-                          onPressed: () => Navigator.pushNamed(context, '/profile'),
+                          onPressed: () => Navigator.pushNamed(context, '/user_profile'),
                           tooltip: "Profile",
                         ),
                       ],

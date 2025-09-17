@@ -203,7 +203,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-      color: Colors.white.withOpacity(0.92),
+      color: Colors.white.withValues(alpha: 0.92),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 18),
         child: TextField(

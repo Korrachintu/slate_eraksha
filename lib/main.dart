@@ -18,7 +18,7 @@ class ERakshaApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouter.generateRoute,
-      initialRoute: '/home',
+      initialRoute: '/onboarding',
     );
   }
 }
