@@ -44,7 +44,7 @@ dependencies:
   permission_handler: ^11.3.1
 
   # Fonts and icons
-  google_fonts: ^6.2.1
+  google_fonts: ^6.3.1
   flutter_svg: ^2.0.10
 
   # Utility
@@ -52,6 +52,10 @@ dependencies:
 
   #camera
   camera: ^0.11.2
+
+  #International Phone Options 
+  intl_phone_field: ^3.2.0
+
 
 dev_dependencies:
   flutter_test:

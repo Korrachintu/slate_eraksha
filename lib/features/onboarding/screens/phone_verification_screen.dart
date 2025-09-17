@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
+
 import '../../../core/widgets/gradient_background.dart';
 import '../../../core/widgets/custom_button.dart';
 
@@ -16,6 +18,7 @@ class PhoneVerificationScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                /// Header Section
                 const SizedBox(height: 80),
                 Text(
                   "Welcome to E-Raksha",
@@ -28,31 +31,48 @@ class PhoneVerificationScreen extends StatelessWidget {
                   "Verify your phone number",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
+
+                /// Phone Input Field
                 const SizedBox(height: 32),
-                TextFormField(
+                IntlPhoneField(
                   decoration: const InputDecoration(
-                    labelText: "Enter Phone Number",
-                    prefixText: "+91   ",
+                    labelText: 'Phone Number',
                     border: OutlineInputBorder(),
                   ),
+                  initialCountryCode: 'IN',
                   keyboardType: TextInputType.phone,
+                  onChanged: (phone) {
+                    debugPrint("Phone entered: ${phone.completeNumber}");
+                  },
                 ),
-                const SizedBox(height: 24),
+
+                /// Pushes button + link to bottom
+                const Spacer(),
+
                 CustomButton(
                   text: "Verify Phone Number",
                   onPressed: () {
-                    Navigator.pushNamed(context, '/otp');// Add navigation or OTP logic here
+                    Navigator.pushNamed(context, '/otp');
                   },
                 ),
+
                 const SizedBox(height: 24),
+
                 Center(
                   child: TextButton(
                     onPressed: () {
                       // Logic for 'Use email, instead'
                     },
-                    child: const Text("Use email, instead"),
+                    child: Text(
+                      "Use email, instead",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 ),
+                const SizedBox(height:40), // bottom spacing
               ],
             ),
           ),

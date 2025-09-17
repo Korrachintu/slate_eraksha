@@ -5,13 +5,13 @@ class AppTheme {
     brightness: Brightness.light,
     primarySwatch: Colors.teal,
     scaffoldBackgroundColor: Colors.white,
-    fontFamily: 'Nunito',
+    fontFamily: 'Nurito',
   );
 
   static final darkTheme = ThemeData(
     brightness: Brightness.dark,
     primarySwatch: Colors.teal,
     scaffoldBackgroundColor: Color(0xFF121212),
-    fontFamily: 'Nunito',
+    fontFamily: 'Nurito',
   );
 }

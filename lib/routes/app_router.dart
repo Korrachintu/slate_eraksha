@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import '../features/onboarding/screens/phone_verification_screen.dart';
 import '../features/onboarding/screens/otp_screen.dart';
 import '../features/home/screens/home_screen.dart';
+import '../features/User/user_profile.dart';
+import '../models/user.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -30,12 +32,20 @@ class AppRouter {
       case '/ai_chat':
         return MaterialPageRoute(builder: (_) => const AIChatScreen());
       case '/emotion_recognition':
-        return MaterialPageRoute(builder: (_) => const EmotionRecognitionScreen());
+        return MaterialPageRoute(
+          builder: (_) => const EmotionRecognitionScreen(),
+        );
+      case '/user_profile':
+        return MaterialPageRoute(
+          builder: (_) => UserProfilePage(user: User.dummyUser),
+        );
       // case '/voiceChat':
-      //   return MaterialPageRoute(builder: (_) => const VoiceChatScreen()); 
-       // ... other routes ...
+      //   return MaterialPageRoute(builder: (_) => const VoiceChatScreen());
+      // ... other routes ...
       default:
-        return MaterialPageRoute(builder: (_) => Scaffold(body: Center(child: Text('Page not found'))));
+        return MaterialPageRoute(
+          builder: (_) => Scaffold(body: Center(child: Text('Page not found'))),
+        );
     }
   }
 }

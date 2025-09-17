@@ -28,7 +28,7 @@ class _AboutYourselfScreenState extends State<AboutYourselfScreen> {
       lastDate: DateTime.now(),
       builder: (context, child) => Theme(
         data: Theme.of(context).copyWith(
-          colorScheme: ColorScheme.light(
+          colorScheme: const ColorScheme.light(
             primary: Colors.deepPurple, // header background color
             onPrimary: Colors.white, // header text color
             onSurface: Colors.black, // body text color
@@ -48,60 +48,75 @@ class _AboutYourselfScreenState extends State<AboutYourselfScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
+      resizeToAvoidBottomInset: true, // 👈 ensures button shifts above keyboard
       body: GradientBackground(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32.0),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                  const SizedBox(height: 32),
-                  Text(
-                    "About yourself",
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
+            child: Column(
+              children: [
+                /// Scrollable form
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.arrow_back),
+                          onPressed: () => Navigator.of(context).pop(),
                         ),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    "Let us personalize your experience",
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                  const SizedBox(height: 32),
-                  TextFormField(
-                    controller: _nameController,
-                    decoration: const InputDecoration(
-                      labelText: "Enter Your Name",
-                      border: OutlineInputBorder(),
+                        const SizedBox(height: 32),
+
+                        /// Header
+                        Text(
+                          "About yourself",
+                          style: Theme.of(context).textTheme.headlineSmall
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          "Let us personalize your experience",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+
+                        /// Inputs
+                        const SizedBox(height: 32),
+                        TextFormField(
+                          controller: _nameController,
+                          decoration: const InputDecoration(
+                            labelText: "Enter Your Name",
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        TextFormField(
+                          controller: _dobController,
+                          readOnly: true,
+                          onTap: () => _selectDate(context),
+                          decoration: const InputDecoration(
+                            labelText: "Date of Birth (DD-MM-YYYY)",
+                            border: OutlineInputBorder(),
+                            suffixIcon: Icon(Icons.calendar_today),
+                          ),
+                        ),
+
+                        const SizedBox(height: 100), // extra space for scroll
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 24),
-                  TextFormField(
-                    controller: _dobController,
-                    readOnly: true,
-                    onTap: () => _selectDate(context),
-                    decoration: const InputDecoration(
-                      labelText: "Date of Birth (DD-MM-YYYY)",
-                      border: OutlineInputBorder(),
-                      suffixIcon: Icon(Icons.calendar_today),
-                    ),
-                  ),
-                  const SizedBox(height: 32),
-                  CustomButton(
+                ),
+
+                /// Fixed bottom button
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 60),
+                  child: CustomButton(
                     text: "Continue",
                     onPressed: () {
                       Navigator.pushNamed(context, '/parental_code');
-                      //  Save details and navigate to next screen todo
-                      // Navigator.pushNamed(context, '/parental_code');
                     },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
